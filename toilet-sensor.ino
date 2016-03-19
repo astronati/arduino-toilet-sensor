@@ -8,13 +8,13 @@ const int LED = 13;
  * @type {number}
  * @description The analogic pin number where the sensor is connected.
  */
-const int SENSOR = 0;
+const int PHOTORESISTOR = 0;
 
 /**
  * @type {number}
- * @description The sensor value when feeded at 5V with a 330ohm resistance.
+ * @description The digital pin number where the sensor is connected.
  */
-int sensorValue = 0;
+const int MAGNETIC_SENSOR = 7;
 
 void setup() {
   // Set led as output
@@ -22,7 +22,16 @@ void setup() {
 }
 
 void loop() {
-  sensorValue = analogRead(SENSOR) < 50 ? HIGH : LOW;
-  digitalWrite(LED, sensorValue);
+  // There is light in the room
+  if (analogRead(PHOTORESISTOR) > 20
+      // Door is closed
+      && digitalRead(MAGNETIC_SENSOR) == HIGH) {
+    // Turn on the led
+    digitalWrite(LED, HIGH);
+  }
+  else {
+    // Turn off the led
+    digitalWrite(LED, LOW);
+  }
 }
 
