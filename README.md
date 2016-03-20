@@ -8,3 +8,6 @@ Given the assumption that there is no window in the toilet, you need to satisfy 
 To match these requirements we need at least of two sensors:
 - A magnetic one to establish if the door is closed.
 - A photoresistor to detect light in the room.
+
+## License
+This package is released under the [MIT license](LICENSE.md).
